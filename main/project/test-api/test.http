@@ -1,0 +1,41 @@
+# Test API Requests for WAF Testing
+
+### 1. Normal GET request
+GET http://localhost:3000/api/test
+Accept: application/json
+
+### 2. Normal POST request
+POST http://localhost:3000/api/test
+Content-Type: application/json
+
+{
+  "message": "Hello, World!"
+}
+
+### 3. SQL Injection Test
+GET http://localhost:3000/api/users?id=1 OR 1=1
+Accept: application/json
+
+### 4. XSS Test
+POST http://localhost:3000/api/comments
+Content-Type: application/json
+
+{
+  "comment": "<script>alert('XSS')</script>"
+}
+
+### 5. Path Traversal Test
+GET http://localhost:3000/api/files?path=../../../etc/passwd
+Accept: application/json
+
+### 6. Command Injection Test
+POST http://localhost:3000/api/execute
+Content-Type: application/json
+
+{
+  "command": "ls; rm -rf /"
+}
+
+### 7. Rate Limiting Test (Run multiple times quickly)
+GET http://localhost:3000/api/stress-test
+Accept: application/json

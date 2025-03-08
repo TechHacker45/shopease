@@ -1,0 +1,6 @@
+[functions]
+[functions.analyze-traffic]
+verify_jwt = false
+
+[functions.unblock-ip]
+verify_jwt = false
